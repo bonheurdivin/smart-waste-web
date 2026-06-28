@@ -19,7 +19,7 @@ export default function DashboardPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const headers = { 'Authorization': `Bearer ${token}` };
-            const base = 'http://localhost/smart-waste-api/api/v1';
+            const base = 'http://smartwaste.infinityfree.io/api/v1';
 
             const [statsRes, pickupsRes, complaintsRes] = await Promise.all([
                 fetch(`${base}/reports/dashboard`, { headers }),

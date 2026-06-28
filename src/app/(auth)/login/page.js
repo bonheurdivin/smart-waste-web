@@ -18,7 +18,7 @@ export default function LoginPage() {
 
         try {
             const response = await fetch(
-                'http://localhost/smart-waste-api/api/v1/auth/login',
+                'http://smartwaste.infinityfree.io/api/v1/auth/login',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
