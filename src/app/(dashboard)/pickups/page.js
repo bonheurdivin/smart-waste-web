@@ -28,7 +28,7 @@ export default function PickupsPage() {
     const fetchPickups = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/pickups', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/pickups', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setPickups(data.data);
         } catch (error) { console.error(error); } finally { setLoading(false); }
@@ -37,7 +37,7 @@ export default function PickupsPage() {
     const fetchHouseholds = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/households', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/households', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setHouseholds(data.data);
         } catch (error) { console.error(error); }
@@ -46,7 +46,7 @@ export default function PickupsPage() {
     const fetchWorkers = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/workers', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/workers', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setWorkers(data.data);
         } catch (error) { console.error(error); }
@@ -55,7 +55,7 @@ export default function PickupsPage() {
     const fetchVehicles = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/vehicles', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/vehicles', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setVehicles(data.data);
         } catch (error) { console.error(error); }
@@ -69,7 +69,7 @@ export default function PickupsPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('admin_token');
-            const url = editing ? `http://smartwaste.infinityfree.io/api/v1/pickups/${editing.id}` : 'http://smartwaste.infinityfree.io/api/v1/pickups';
+            const url = editing ? `https://smartwaste.infinityfree.io/api/v1/pickups/${editing.id}` : 'https://smartwaste.infinityfree.io/api/v1/pickups';
             const method = editing ? 'PUT' : 'POST';
             const response = await fetch(url, { method, headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
             const data = await response.json();

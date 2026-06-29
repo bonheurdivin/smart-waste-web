@@ -26,7 +26,7 @@ export default function ProfilePage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                'http://smartwaste.infinityfree.io/api/v1/auth/profile',
+                'https://smartwaste.infinityfree.io/api/v1/auth/profile',
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
             const data = await response.json();
@@ -51,7 +51,7 @@ export default function ProfilePage() {
             formData.append('photo', file);
 
             const response = await fetch(
-                'http://smartwaste.infinityfree.io/api/v1/auth/profile/picture',
+                'https://smartwaste.infinityfree.io/api/v1/auth/profile/picture',
                 {
                     method: 'POST',
                     headers: { 'Authorization': `Bearer ${token}` },
@@ -86,7 +86,7 @@ export default function ProfilePage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                'http://smartwaste.infinityfree.io/api/v1/auth/change-password',
+                'https://smartwaste.infinityfree.io/api/v1/auth/change-password',
                 {
                     method: 'POST',
                     headers: {

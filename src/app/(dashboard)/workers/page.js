@@ -26,7 +26,7 @@ export default function WorkersPage() {
     const fetchWorkers = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/workers', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/workers', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setWorkers(data.data);
         } catch (error) { console.error(error); } finally { setLoading(false); }
@@ -35,7 +35,7 @@ export default function WorkersPage() {
     const fetchUsers = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/users/workers', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/users/workers', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setUsers(data.data);
         } catch (error) { console.error(error); }
@@ -49,7 +49,7 @@ export default function WorkersPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('admin_token');
-            const url = editing ? `http://smartwaste.infinityfree.io/api/v1/workers/${editing.id}` : 'http://smartwaste.infinityfree.io/api/v1/workers';
+            const url = editing ? `https://smartwaste.infinityfree.io/api/v1/workers/${editing.id}` : 'https://smartwaste.infinityfree.io/api/v1/workers';
             const method = editing ? 'PUT' : 'POST';
             const response = await fetch(url, { method, headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
             const data = await response.json();
@@ -61,7 +61,7 @@ export default function WorkersPage() {
         if (!confirm('Are you sure?')) return;
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch(`http://smartwaste.infinityfree.io/api/v1/workers/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`https://smartwaste.infinityfree.io/api/v1/workers/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') fetchWorkers();
         } catch (error) { console.error(error); }

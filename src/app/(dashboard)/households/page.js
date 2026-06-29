@@ -29,7 +29,7 @@ export default function HouseholdsPage() {
     const fetchHouseholds = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/households', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/households', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setHouseholds(data.data);
         } catch (error) { console.error(error); } finally { setLoading(false); }
@@ -37,7 +37,7 @@ export default function HouseholdsPage() {
 
     const fetchPlans = async () => {
         try {
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/plans');
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/plans');
             const data = await response.json();
             if (data.status === 'success') setPlans(data.data);
         } catch (error) { console.error(error); }
@@ -46,7 +46,7 @@ export default function HouseholdsPage() {
     const fetchResidents = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('http://smartwaste.infinityfree.io/api/v1/users/residents', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/users/residents', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setResidents(data.data);
         } catch (error) { console.error(error); }
@@ -60,7 +60,7 @@ export default function HouseholdsPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('admin_token');
-            const url = editing ? `http://smartwaste.infinityfree.io/api/v1/households/${editing.id}` : 'http://smartwaste.infinityfree.io/api/v1/households';
+            const url = editing ? `https://smartwaste.infinityfree.io/api/v1/households/${editing.id}` : 'https://smartwaste.infinityfree.io/api/v1/households';
             const method = editing ? 'PUT' : 'POST';
             const response = await fetch(url, { method, headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
             const data = await response.json();
@@ -72,7 +72,7 @@ export default function HouseholdsPage() {
         if (!confirm('Are you sure?')) return;
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch(`http://smartwaste.infinityfree.io/api/v1/households/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`https://smartwaste.infinityfree.io/api/v1/households/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') fetchHouseholds();
         } catch (error) { console.error(error); }
