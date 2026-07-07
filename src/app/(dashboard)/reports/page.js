@@ -19,7 +19,7 @@ export default function ReportsPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const headers = { 'Authorization': `Bearer ${token}` };
-            const base = 'https://smartwaste.infinityfree.io/api/v1/reports';
+            const base = 'https://smart-waste-collector.up.railway.app/api/v1/reports';
 
             const [dashRes, dailyRes, workerRes, zoneRes] = await Promise.all([
                 fetch(`${base}/dashboard`, { headers }),

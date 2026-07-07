@@ -26,7 +26,7 @@ export default function PlansPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                'https://smartwaste.infinityfree.io/api/v1/plans',
+                'https://smart-waste-collector.up.railway.app/api/v1/plans',
                 { headers: { 'Authorization': `Bearer ${token}` } }
             );
             const data = await response.json();
@@ -59,8 +59,8 @@ export default function PlansPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const url = editing
-                ? `https://smartwaste.infinityfree.io/api/v1/plans/${editing.id}`
-                : 'https://smartwaste.infinityfree.io/api/v1/plans';
+                ? `https://smart-waste-collector.up.railway.app/api/v1/plans/${editing.id}`
+                : 'https://smart-waste-collector.up.railway.app/api/v1/plans';
             const method = editing ? 'PUT' : 'POST';
 
             const response = await fetch(url, {
@@ -88,7 +88,7 @@ export default function PlansPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                `https://smartwaste.infinityfree.io/api/v1/plans/${id}`,
+                `https://smart-waste-collector.up.railway.app/api/v1/plans/${id}`,
                 {
                     method: 'DELETE',
                     headers: { 'Authorization': `Bearer ${token}` }

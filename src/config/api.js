@@ -1,2 +1,2 @@
-const API_BASE = 'https://smartwaste.infinityfree.io/api/v1';
+const API_BASE = 'https://smart-waste-collector.up.railway.app/api/v1';
 export default API_BASE;

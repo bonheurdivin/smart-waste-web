@@ -25,7 +25,7 @@ export default function ComplaintsPage() {
     const fetchComplaints = async () => {
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch('https://smartwaste.infinityfree.io/api/v1/complaints', { headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch('https://smart-waste-collector.up.railway.app/api/v1/complaints', { headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') setComplaints(data.data);
         } catch (error) { console.error(error); } finally { setLoading(false); }
@@ -39,7 +39,7 @@ export default function ComplaintsPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch(`https://smartwaste.infinityfree.io/api/v1/complaints/${selected.id}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
+            const response = await fetch(`https://smart-waste-collector.up.railway.app/api/v1/complaints/${selected.id}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' }, body: JSON.stringify(form) });
             const data = await response.json();
             if (data.status === 'success') { setShowModal(false); fetchComplaints(); }
         } catch (error) { console.error(error); } finally { setSaving(false); }
@@ -49,7 +49,7 @@ export default function ComplaintsPage() {
         if (!confirm('Are you sure?')) return;
         try {
             const token = localStorage.getItem('admin_token');
-            const response = await fetch(`https://smartwaste.infinityfree.io/api/v1/complaints/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
+            const response = await fetch(`https://smart-waste-collector.up.railway.app/api/v1/complaints/${id}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
             const data = await response.json();
             if (data.status === 'success') fetchComplaints();
         } catch (error) { console.error(error); }

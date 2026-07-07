@@ -23,7 +23,7 @@ export default function NotificationsPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                'https://smartwaste.infinityfree.io/api/v1/notifications',
+                'https://smart-waste-collector.up.railway.app/api/v1/notifications',
                 {
                     headers: { 'Authorization': `Bearer ${token}` }
                 }
@@ -45,7 +45,7 @@ export default function NotificationsPage() {
         try {
             const token = localStorage.getItem('admin_token');
             const response = await fetch(
-                'https://smartwaste.infinityfree.io/api/v1/notifications/send',
+                'https://smart-waste-collector.up.railway.app/api/v1/notifications/send',
                 {
                     method: 'POST',
                     headers: {
