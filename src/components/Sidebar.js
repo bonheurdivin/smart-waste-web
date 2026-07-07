@@ -14,7 +14,7 @@ const navItems = [
     { label: 'Pickups', href: '/pickups', icon: 'ic:round-takeout-dining' },
     { label: 'Payments', href: '/payments', icon: 'fluent:payment-20-filled' },
     { label: 'Reports', href: '/reports', icon: 'mdi:report-box' },
-    { label: 'Complaints', href: '/complaints', icon: null, emoji: '⚠️' },
+    { label: 'Complaints', href: '/complaints', icon: 'icon-park-solid:caution' },
     { label: 'Notifications', href: '/notifications', icon: 'iconamoon:notification-fill' },
 ];
 
