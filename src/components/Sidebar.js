@@ -14,7 +14,7 @@ const navItems = [
     { label: 'Pickups', href: '/pickups', icon: 'ic:round-takeout-dining' },
     { label: 'Payments', href: '/payments', icon: 'fluent:payment-20-filled' },
     { label: 'Reports', href: '/reports', icon: 'mdi:report-box' },
-    { label: 'Complaints', href: '/complaints', icon: 'icon-park-solid:caution' },
+    { label: 'Complaints', href: '/complaints', icon: null, emoji: '⚠️' },
     { label: 'Notifications', href: '/notifications', icon: 'iconamoon:notification-fill' },
 ];
 
@@ -23,7 +23,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
     return (
         <>
-            {/* Overlay for mobile */}
+            {/* Dark overlay for mobile */}
             {isOpen && (
                 <div
                     onClick={onClose}
@@ -40,20 +40,21 @@ export default function Sidebar({ isOpen, onClose }) {
             )}
 
             {/* Sidebar */}
-            <aside style={{
-                width: '240px',
-                minHeight: '100vh',
-                backgroundColor: 'var(--primary-dark)',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'fixed',
-                left: 0,
-                top: 0,
-                zIndex: 99,
-                transform: isOpen ? 'translateX(0)' : undefined,
-                transition: 'transform 0.3s ease',
-            }}
-            className="sidebar"
+            <aside
+                className="sidebar"
+                style={{
+                    width: '240px',
+                    minHeight: '100vh',
+                    backgroundColor: 'var(--primary-dark)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    position: 'fixed',
+                    left: 0,
+                    top: 0,
+                    zIndex: 99,
+                    transition: 'transform 0.3s ease',
+                    transform: isOpen ? 'translateX(0)' : undefined,
+                }}
             >
                 {/* Logo */}
                 <div style={{
@@ -63,11 +64,22 @@ export default function Sidebar({ isOpen, onClose }) {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                    }}>
                         <span style={{ fontSize: '24px' }}>♻️</span>
                         <div>
-                            <p style={{ color: '#FFFFFF', fontWeight: '700', fontSize: '14px' }}>Smart Waste</p>
-                            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '12px' }}>Admin Panel</p>
+                            <p style={{
+                                color: '#FFFFFF',
+                                fontWeight: '700',
+                                fontSize: '14px',
+                            }}>Smart Waste</p>
+                            <p style={{
+                                color: 'rgba(255,255,255,0.6)',
+                                fontSize: '12px',
+                            }}>Admin Panel</p>
                         </div>
                     </div>
                     <button
@@ -106,9 +118,16 @@ export default function Sidebar({ isOpen, onClose }) {
                                 }}
                             >
                                 {item.icon ? (
-                                    <Icon icon={item.icon} style={{ width: '32px', height: '32px', color: '#FFFFFF' }} />
+                                    <Icon
+                                        icon={item.icon}
+                                        style={{
+                                            width: '24px',
+                                            height: '24px',
+                                            color: '#FFFFFF',
+                                        }}
+                                    />
                                 ) : (
-                                    <span style={{ fontSize: '24px' }}>{item.emoji}</span>
+                                    <span style={{ fontSize: '20px' }}>{item.emoji}</span>
                                 )}
                                 <span>{item.label}</span>
                             </Link>
@@ -117,8 +136,14 @@ export default function Sidebar({ isOpen, onClose }) {
                 </nav>
 
                 {/* Bottom */}
-                <div style={{ padding: '20px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '12px' }}>Smart Waste v1.0</p>
+                <div style={{
+                    padding: '20px',
+                    borderTop: '1px solid rgba(255,255,255,0.1)',
+                }}>
+                    <p style={{
+                        color: 'rgba(255,255,255,0.5)',
+                        fontSize: '12px',
+                    }}>Smart Waste v1.0</p>
                 </div>
             </aside>
 
