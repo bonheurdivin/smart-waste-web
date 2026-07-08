@@ -41,7 +41,6 @@ export default function Sidebar({ isOpen, onClose }) {
 
             {/* Sidebar */}
             <aside
-                className="sidebar"
                 style={{
                     width: '240px',
                     minHeight: '100vh',
@@ -53,8 +52,9 @@ export default function Sidebar({ isOpen, onClose }) {
                     top: 0,
                     zIndex: 99,
                     transition: 'transform 0.3s ease',
-                    transform: isOpen ? 'translateX(0)' : undefined,
+                    transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
                 }}
+                className="sidebar"
             >
                 {/* Logo */}
                 <div style={{
@@ -84,14 +84,12 @@ export default function Sidebar({ isOpen, onClose }) {
                     </div>
                     <button
                         onClick={onClose}
-                        className="close-btn"
                         style={{
                             background: 'none',
                             border: 'none',
                             color: '#FFFFFF',
                             cursor: 'pointer',
                             fontSize: '20px',
-                            display: 'none',
                         }}>✕</button>
                 </div>
 
@@ -151,17 +149,6 @@ export default function Sidebar({ isOpen, onClose }) {
                 @media (min-width: 769px) {
                     .sidebar {
                         transform: translateX(0) !important;
-                    }
-                    .close-btn {
-                        display: none !important;
-                    }
-                }
-                @media (max-width: 768px) {
-                    .sidebar {
-                        transform: translateX(-100%);
-                    }
-                    .close-btn {
-                        display: block !important;
                     }
                 }
             `}</style>

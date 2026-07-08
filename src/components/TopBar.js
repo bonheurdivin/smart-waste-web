@@ -2,9 +2,26 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+const pageTitles = {
+    '/dashboard': 'Dashboard',
+    '/households': 'Households',
+    '/plans': 'Plans & Pricing',
+    '/workers': 'Workers',
+    '/vehicles': 'Vehicles & Fleet',
+    '/schedules': 'Schedules & Routes',
+    '/pickups': 'Pickups',
+    '/payments': 'Payments Tracking',
+    '/reports': 'Reports & Export',
+    '/complaints': 'Complaints Management',
+    '/notifications': 'Notifications Composer',
+    '/profile': 'My Profile',
+};
 
 export default function TopBar({ onMenuClick }) {
     const [user, setUser] = useState(null);
+    const pathname = usePathname();
 
     useEffect(() => {
         const stored = localStorage.getItem('admin_user');
@@ -18,6 +35,8 @@ export default function TopBar({ onMenuClick }) {
         .toUpperCase()
         .slice(0, 2) ?? 'AD';
 
+    const title = pageTitles[pathname] ?? 'Smart Waste';
+
     return (
         <header style={{
             height: '64px',
@@ -29,13 +48,14 @@ export default function TopBar({ onMenuClick }) {
             padding: '0 24px',
             position: 'fixed',
             top: 0,
-            left: '240px',
-            right: 0,
             zIndex: 97,
+            right: 0,
+            left: '240px',
         }}
         className="topbar"
         >
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                {/* Hamburger Menu */}
                 <button
                     onClick={onMenuClick}
                     className="menu-btn"
@@ -46,18 +66,19 @@ export default function TopBar({ onMenuClick }) {
                         fontSize: '24px',
                         display: 'none',
                         color: 'var(--text-primary)',
+                        padding: '8px',
+                        borderRadius: '8px',
                     }}>☰</button>
-                <span
-                    className="mobile-logo"
-                    style={{
-                        display: 'none',
-                        fontSize: '16px',
-                        fontWeight: '700',
-                        color: 'var(--primary-dark)',
-                    }}>♻️ Smart Waste</span>
+
+                {/* Page Title */}
+                <h1 style={{
+                    fontSize: '20px',
+                    fontWeight: '600',
+                    color: 'var(--text-primary)',
+                }}>{title}</h1>
             </div>
 
-            {/* Admin Info — click goes to profile */}
+            {/* Admin Info */}
             <Link href="/profile" style={{ textDecoration: 'none' }}>
                 <div style={{
                     display: 'flex',
@@ -97,22 +118,35 @@ export default function TopBar({ onMenuClick }) {
                             color: 'var(--text-primary)',
                             fontWeight: '500',
                         }}>{user?.name ?? 'Admin'}</span>
-                    <span style={{ fontSize: '12px', color: '#6B7280' }}></span>
+                    <span style={{
+                        fontSize: '12px',
+                        color: '#6B7280',
+                    }}></span>
                 </div>
             </Link>
 
             <style>{`
                 @media (min-width: 769px) {
-                    .topbar { left: 240px !important; }
-                    .menu-btn { display: none !important; }
-                    .mobile-logo { display: none !important; }
-                    .admin-name { display: block !important; }
+                    .topbar {
+                        left: 240px !important;
+                    }
+                    .menu-btn {
+                        display: none !important;
+                    }
+                    .admin-name {
+                        display: block !important;
+                    }
                 }
                 @media (max-width: 768px) {
-                    .topbar { left: 0 !important; }
-                    .menu-btn { display: block !important; }
-                    .mobile-logo { display: block !important; }
-                    .admin-name { display: none !important; }
+                    .topbar {
+                        left: 0 !important;
+                    }
+                    .menu-btn {
+                        display: block !important;
+                    }
+                    .admin-name {
+                        display: none !important;
+                    }
                 }
             `}</style>
         </header>
