@@ -35,7 +35,8 @@ export default function TopBar({ onMenuClick }) {
         .toUpperCase()
         .slice(0, 2) ?? 'AD';
 
-    const title = pageTitles[pathname] ?? 'Smart Waste';
+    const cleanPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
+    const title = pageTitles[cleanPathname] ?? 'Smart Waste';
 
     return (
         <header style={{
