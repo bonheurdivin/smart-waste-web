@@ -8,7 +8,7 @@ export default function DashboardLayout({ children }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', minHeight: '100vh', width: '100%' }}>
             <Sidebar
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
@@ -22,12 +22,20 @@ export default function DashboardLayout({ children }) {
                     minHeight: '100vh',
                     backgroundColor: 'var(--background)',
                     paddingTop: '64px',
+                    position: 'relative',
+                    width: '100%',
                 }}
             >
-                <TopBar onMenuClick={() => setSidebarOpen(true)} />
-                {children}
-            </div>
+                {/* Wrapped TopBar in a high z-index container to force click priority */}
+                <div style={{ position: 'relative', zIndex: 98 }}>
+                    <TopBar onMenuClick={() => setSidebarOpen(true)} />
+                </div>
 
+                <main style={{ padding: '24px' }}>
+                    {children}
+                </main>
+            </div>
+            
             <style>{`
                 @media (min-width: 769px) {
                     .main-content {
