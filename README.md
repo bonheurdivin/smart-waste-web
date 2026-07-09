@@ -13,7 +13,7 @@ https://smartwastecollector.vercel.app
 - Deployed on Vercel
 
 ## ✨ Features
-- Role-based login (Admin, Dispatcher, Finance)
+- Admin login
 - Responsive design — works on desktop and mobile
 - Dashboard with real-time statistics and recent activity
 - Full CRUD operations on all entities
@@ -35,18 +35,18 @@ https://smartwastecollector.vercel.app
 | Page | Description | Access |
 |------|-------------|--------|
 | `/login` | Admin login | Public |
-| `/dashboard` | Overview + recent activity | All Staff |
-| `/households` | Manage households | Admin/Dispatcher |
+| `/dashboard` | Overview + recent activity | Admin |
+| `/households` | Manage households | Admin |
 | `/plans` | Collection plans and pricing | Admin |
-| `/workers` | Manage field workers | Admin/Dispatcher |
-| `/vehicles` | Vehicle fleet management | Admin/Dispatcher |
-| `/schedules` | Route and schedule planning | Admin/Dispatcher |
-| `/pickups` | Pickup tracking and assignment | Admin/Dispatcher |
-| `/payments` | Payment tracking and approval | Admin/Finance |
-| `/reports` | Analytics and productivity reports | Admin/Finance |
-| `/complaints` | Resident complaints management | Admin/Dispatcher |
-| `/notifications` | Broadcast notifications | Admin/Dispatcher |
-| `/profile` | Admin profile and settings | All Staff |
+| `/workers` | Manage field workers | Admin |
+| `/vehicles` | Vehicle fleet management | Admin |
+| `/schedules` | Route and schedule planning | Admin |
+| `/pickups` | Pickup tracking and assignment | Admin |
+| `/payments` | Payment tracking and approval | Admin |
+| `/reports` | Analytics and productivity reports | Admin |
+| `/complaints` | Resident complaints management | Admin |
+| `/notifications` | Broadcast notifications | Admin |
+| `/profile` | Admin profile and settings | Admin |
 
 ## 🚀 Local Installation
 
@@ -115,5 +115,5 @@ smart-waste-web/
 └── README.md
 
 ## 👨‍💻 Author
-**Divin** — Internship Project 2026
+**Divin** — Project 2026
 - GitHub: [@bonheurdivin](https://github.com/bonheurdivin)
