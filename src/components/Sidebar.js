@@ -20,6 +20,7 @@ const navItems = [
 
 export default function Sidebar({ isOpen, onClose }) {
     const pathname = usePathname();
+    const cleanPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
 
     return (
         <>
@@ -82,8 +83,10 @@ export default function Sidebar({ isOpen, onClose }) {
                             }}>Admin Panel</p>
                         </div>
                     </div>
+                    {/* Added className="close-btn" so CSS can hide it on desktop */}
                     <button
                         onClick={onClose}
+                        className="close-btn"
                         style={{
                             background: 'none',
                             border: 'none',
@@ -96,7 +99,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 {/* Nav Items */}
                 <nav style={{ padding: '12px 0', flex: 1 }}>
                     {navItems.map((item) => {
-                        const isActive = pathname === item.href;
+                        const isActive = cleanPathname === item.href;
                         return (
                             <Link
                                 key={item.href}
@@ -111,7 +114,7 @@ export default function Sidebar({ isOpen, onClose }) {
                                     backgroundColor: isActive ? 'var(--primary-light)' : 'transparent',
                                     textDecoration: 'none',
                                     fontSize: '14px',
-                                    fontWeight: isActive ? '600' : '400',
+                                    fontWeight: isActive ? '700' : '400', // Changed 600 to 700 to make it bolder
                                     transition: 'all 0.2s',
                                 }}
                             >
@@ -149,6 +152,10 @@ export default function Sidebar({ isOpen, onClose }) {
                 @media (min-width: 769px) {
                     .sidebar {
                         transform: translateX(0) !important;
+                    }
+                    /* Hides the cross button when on desktop viewports */
+                    .close-btn {
+                        display: none !important;
                     }
                 }
             `}</style>
