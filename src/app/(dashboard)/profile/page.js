@@ -61,7 +61,28 @@ export default function ProfilePage() {
             const data = await response.json();
             if (data.status === 'success') {
                 setMessage({ type: 'success', text: 'Profile picture updated!' });
-                fetchProfile();
+                
+                // 1. Fetch updated values from backend
+                const profileResponse = await fetch(
+                    'https://smart-waste-collector.up.railway.app/api/v1/auth/profile',
+                    { headers: { 'Authorization': `Bearer ${token}` } }
+                );
+                const profileData = await profileResponse.json();
+
+                if (profileData.status === 'success') {
+                    // 2. Append a cache-buster timestamp to the photo url string
+                    const updatedUser = {
+                        ...profileData.data,
+                        photo_url: profileData.data.photo_url ? `${profileData.data.photo_url}?t=${Date.now()}` : null
+                    };
+
+                    // 3. Set your React states and sync storage synchronously
+                    setUser(updatedUser);
+                    localStorage.setItem('admin_user', JSON.stringify(updatedUser));
+
+                    // 4. Force a custom window event to notify the separate TopBar component to refresh its state instantly
+                    window.dispatchEvent(new Event('storage'));
+                }
             } else {
                 setMessage({ type: 'error', text: data.message });
             }

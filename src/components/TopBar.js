@@ -24,8 +24,15 @@ export default function TopBar({ onMenuClick }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        const stored = localStorage.getItem('admin_user');
-        if (stored) setUser(JSON.parse(stored));
+        const loadUser = () => {
+            const stored = localStorage.getItem('admin_user');
+            if (stored) setUser(JSON.parse(stored));
+        };
+
+        loadUser();
+
+        window.addEventListener('storage', loadUser);
+        return () => window.removeEventListener('storage', loadUser);
     }, []);
 
     const initials = user?.name
