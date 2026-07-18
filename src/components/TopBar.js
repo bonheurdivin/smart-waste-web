@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from './ThemeProvider';
 
 const pageTitles = {
     '/dashboard': 'Dashboard',
@@ -44,6 +45,7 @@ export default function TopBar({ onMenuClick }) {
 
     const cleanPathname = pathname === '/' ? '/' : pathname.replace(/\/$/, '');
     const title = pageTitles[cleanPathname] ?? 'Smart Waste';
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <header style={{
@@ -85,6 +87,22 @@ export default function TopBar({ onMenuClick }) {
                     color: 'var(--text-primary)',
                 }}>{title}</h1>
             </div>
+
+            {/* Theme Toggle */}
+            <button
+                onClick={toggleTheme}
+                style={{
+                    background: 'none',
+                    border: '1px solid var(--border)',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    fontSize: '18px',
+                    padding: '6px 10px',
+                    color: 'var(--text-primary)',
+                    backgroundColor: 'var(--surface)',
+                }}>
+                {theme === 'light' ? '🌙' : '☀️'}
+            </button>
 
             {/* Admin Info */}
             <Link href="/profile" style={{ textDecoration: 'none' }}>

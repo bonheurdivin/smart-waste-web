@@ -10,9 +10,9 @@ export default function DataTable({ columns, data, renderRow }) {
             <div style={{
                 display: 'grid',
                 gridTemplateColumns: `repeat(${columns.length}, 1fr)`,
-                backgroundColor: '#F3F4F6',
+                backgroundColor: 'var(--table-header)',
                 padding: '12px 24px',
-                borderBottom: '1px solid #E5E7EB',
+                borderBottom: '1px solid var(--border)',
             }}>
                 {columns.map((col, i) => (
                     <span key={i} style={{
@@ -42,7 +42,7 @@ export default function DataTable({ columns, data, renderRow }) {
                             display: 'grid',
                             gridTemplateColumns: `repeat(${columns.length}, 1fr)`,
                             padding: '16px 24px',
-                            borderBottom: '1px solid #E5E7EB',
+                            borderBottom: '1px solid var(--border)',
                             alignItems: 'center',
                             textAlign: 'center',
                             justifyItems: 'center',
